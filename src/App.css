@@ -293,3 +293,32 @@ ul {
   border-left: 5px solid #f1c40f;
   margin-top: 10px;
 }
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.link {
+  cursor: pointer;
+  color: #1e88e5;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link-paciente {
+  cursor: pointer;
+  color: #2563eb;
+}
+
+.link-paciente:hover {
+  text-decoration: underline;
+}
