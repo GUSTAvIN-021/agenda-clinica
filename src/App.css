@@ -1,0 +1,295 @@
+/* 🌿 Reset e base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f2f4f8;
+  color: #2c2c2c;
+}
+
+/* 📦 Container */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* 🟦 Títulos */
+h1 {
+  text-align: center;
+  color: #0f4c5c; /* azul petróleo */
+  margin-bottom: 30px;
+}
+
+h2, h3 {
+  color: #0f4c5c;
+  margin-top: 0;
+}
+
+/* 📦 Cards */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.card.destaque {
+  border-left: 6px solid #0f4c5c;
+}
+
+/* ✏️ Inputs e selects */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #0f4c5c;
+  box-shadow: 0 0 0 2px rgba(15, 76, 92, 0.15);
+}
+
+/* 🔘 Botões */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0f4c5c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #093640;
+  transform: translateY(-1px);
+}
+
+/* ❌ Botão excluir */
+.btn-excluir {
+  background-color: #e74c3c;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+.btn-excluir:hover {
+  background-color: #c0392b;
+}
+
+/* 📋 Listas */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item-agenda {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* 📅 Visão geral dos dias */
+.resumo-dias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.dia-resumo {
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dia-resumo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.dia-resumo strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* 🎨 Estados dos dias */
+.muitas-vagas {
+  background-color: #d6eaf8; /* azul pastel */
+}
+
+.poucas-vagas {
+  background-color: #f9e0e7; /* rosa pastel */
+}
+
+.quase-cheio {
+  background-color: #f8c471; /* laranja suave */
+}
+
+.lotado {
+  background-color: #2f2f2f; /* cinza escuro */
+  color: #ffffff;
+}
+
+/* ⏰ Lista de horários */
+.lista-horarios li {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+/* Estados dos horários */
+.livre {
+  background-color: #fcf3cf; /* amarelo */
+  color: #7d6608;
+}
+
+.ocupado {
+  background-color: #e5e7e9;
+  color: #626567;
+  cursor: not-allowed;
+}
+
+.selecionado {
+  background-color: #aed6f1;
+  border: 2px solid #0f4c5c;
+  font-weight: bold;
+}
+
+/* 📊 Dashboard */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.dashboard-item {
+  padding: 18px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.dashboard-item strong {
+  font-size: 28px;
+  display: block;
+}
+
+.dashboard-item span {
+  font-size: 14px;
+}
+
+/* 🎨 Cores do dashboard */
+.azul {
+  background-color: #d6eaf8;
+}
+
+.amarelo {
+  background-color: #fcf3cf;
+}
+
+.rosa {
+  background-color: #f9e0e7;
+}
+
+/* 🧭 Menu */
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.menu button {
+  width: auto;
+  padding: 10px 18px;
+  border-radius: 20px;
+  background-color: #e5e7e9;
+  color: #2c2c2c;
+}
+
+.menu button.ativo {
+  background-color: #0f4c5c;
+  color: white;
+}
+
+.dias-semana {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.checkbox-dia {
+  background: #d6eaf8;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.checkbox-dia input {
+  margin-right: 6px;
+}
+
+.tabela-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.tabela-planilha {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabela-planilha th,
+.tabela-planilha td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.tabela-planilha th {
+  background-color: #0f4c5c;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.hora-col {
+  background-color: #f2f4f8;
+  font-weight: bold;
+}
+
+.celula-livre {
+  background-color: #fcf3cf;
+  color: #7d6608;
+}
+
+.celula-ocupada {
+  background-color: #f9e0e7;
+  color: #922b21;
+  font-weight: bold;
+}
+
+.aviso {
+  background-color: #fcf3cf;
+  border-left: 5px solid #f1c40f;
+  margin-top: 10px;
+}
