@@ -1,16 +1,34 @@
-# React + Vite
+# Agenda Clínica 🗓️🩺
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema web de **agendamento e organização de atendimentos clínicos**, desenvolvido com foco em clínicas que realizam **múltiplos atendimentos por criança**, como clínicas voltadas ao acompanhamento infantil e terapias especializadas.
 
-Currently, two official plugins are available:
+O projeto foi idealizado para resolver um problema real de organização, oferecendo uma interface simples, clara e funcional.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🎯 Objetivo do Projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Facilitar a gestão de:
+- Agendamentos de atendimentos
+- Organização de pacientes (crianças)
+- Visualização de horários de forma prática (modelo inspirado em planilhas)
+- Controle de informações clínicas básicas
 
-## Expanding the ESLint configuration
+Este projeto também tem como objetivo **demonstrar habilidades técnicas** em desenvolvimento web e organização de código para fins acadêmicos e profissionais.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **HTML5**
+- **CSS3**
+- **JavaScript**
+- **Node.js** (ambiente)
+- **Git & GitHub** (versionamento)
+
+> O projeto está em desenvolvimento e poderá receber novas tecnologias futuramente, como frameworks frontend e backend.
+
+---
+
+## 📂 Estrutura do Projeto
+
