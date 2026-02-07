@@ -1,9 +1,8 @@
 export default function AgendaPage({
   agendamentos,
-  setAgendamentos,
-  pacientes,
-  setPaciente,
+  resumoDias,
   paciente,
+  setPaciente,
   data,
   setData,
   hora,
@@ -12,55 +11,31 @@ export default function AgendaPage({
   setFiltroData,
   profissional,
   setProfissional,
-  profissionais,
   profissionaisDisponiveis,
   HORARIOS,
   horariosDoDia,
   agendamentosDoDia,
   excluirHorario,
-  resumoDias,
-  nomeDiaSemana,
-  totalAgendamentos,
-  taxaOcupacao,
-  atendimentosPorTipo,
-  historicoPaciente,
   adicionar,
+  historicoPaciente,
+  nomeDiaSemana,
   setTela,
   setPacienteSelecionado
 }) {
+
+  
+
+  if (
+    !Array.isArray(resumoDias) ||
+    !Array.isArray(horariosDoDia) ||
+    !Array.isArray(agendamentosDoDia) ||
+    !Array.isArray(historicoPaciente)
+  ) {
+    return <p>Carregando agenda...</p>;
+  }
+
   return (
     <>
-      {/* DASHBOARD */}
-      <div className="card destaque">
-        <h2>Resumo do Mês</h2>
-
-        <div className="dashboard">
-          <div className="dashboard-item azul">
-            <strong>{totalAgendamentos}</strong>
-            <span>Atendimentos no mês</span>
-          </div>
-
-          <div className="dashboard-item amarelo">
-            <strong>{taxaOcupacao}%</strong>
-            <span>Taxa de ocupação</span>
-          </div>
-
-          <div className="dashboard-item rosa">
-            <strong>{Object.keys(atendimentosPorTipo).length}</strong>
-            <span>Tipos de atendimento</span>
-          </div>
-        </div>
-
-        <h3>Atendimentos por tipo</h3>
-        <ul>
-          {Object.entries(atendimentosPorTipo).map(([tipo, qtd]) => (
-            <li key={tipo}>
-              {tipo}: {qtd}
-            </li>
-          ))}
-        </ul>
-      </div>
-
       {/* VISÃO GERAL DOS DIAS */}
       <div className="card">
         <h2>Visão Geral da Agenda</h2>
@@ -156,7 +131,25 @@ export default function AgendaPage({
           </select>
         )}
 
-        <button onClick={adicionar}>Salvar</button>
+        <button
+          className="btn-salvar-agendamento"
+          disabled={!paciente || !data || !hora || !profissional}
+          onClick={() => {
+            const ok = adicionar();
+            if (ok) {
+              setPaciente("");
+              setHora("");
+              alert("Agendamento salvo com sucesso!");
+            } else {
+              alert("Preencha todos os campos ou horário ocupado.");
+            }
+          }}
+        >
+          Salvar
+        </button>
+
+
+
       </div>
 
       {/* HORÁRIOS */}
@@ -189,7 +182,7 @@ export default function AgendaPage({
         )}
       </div>
 
-      {/* LISTA DE AGENDAMENTOS */}
+      {/* AGENDAMENTOS */}
       <div className="card">
         <h2>Agendamentos</h2>
 
@@ -202,13 +195,13 @@ export default function AgendaPage({
                 </span>
                 <br />
                 <strong
-                    className="link-paciente"
-                    onClick={() => {
-                        setPacienteSelecionado(a.paciente);
-                        setTela("paciente");
-                    }}
+                  className="link-paciente"
+                  onClick={() => {
+                    setPacienteSelecionado(a.paciente);
+                    setTela("pacientes");
+                  }}
                 >
-                    {a.paciente}
+                  {a.paciente}
                 </strong>
 
                 <br />

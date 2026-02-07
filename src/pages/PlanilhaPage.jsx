@@ -5,13 +5,37 @@ export default function PlanilhaPage({
   HORARIOS,
   getAgendamento
 }) {
+  if (!Array.isArray(profissionais) || profissionais.length === 0) {
+    return (
+      <div className="card aviso">
+        <p>Nenhum profissional cadastrado.</p>
+      </div>
+    );
+  }
+
+  if (!Array.isArray(HORARIOS) || HORARIOS.length === 0) {
+    return (
+      <div className="card aviso">
+        <p>Horários não configurados.</p>
+      </div>
+    );
+  }
+
+  if (typeof getAgendamento !== "function") {
+    return (
+      <div className="card aviso">
+        <p>Erro interno: função de agendamento não disponível.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="card destaque">
       <h2>Visão Geral por Profissional</h2>
 
       <input
         type="date"
-        value={diaPlanilha}
+        value={diaPlanilha || ""}
         onChange={(e) => setDiaPlanilha(e.target.value)}
       />
 

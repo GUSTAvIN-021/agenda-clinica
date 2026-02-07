@@ -1,71 +1,65 @@
-export default function PacientePage({
+function PacientePage({
   pacienteSelecionado,
   agendamentos,
+  setPacienteSelecionado,
   setTela
 }) {
-  const atendimentos = agendamentos.filter(
-    (a) => a.paciente === pacienteSelecionado
-  );
+  // lista única de pacientes
+  const pacientes = [...new Set(agendamentos.map(a => a.paciente))];
 
-  // 🔹 Agrupar atendimentos por tipo
-  const atendimentosPorTipo = atendimentos.reduce((acc, a) => {
-    if (!acc[a.tipo]) acc[a.tipo] = [];
-    acc[a.tipo].push(a);
-    return acc;
-  }, {});
+  const historico = pacienteSelecionado
+    ? agendamentos.filter(a => a.paciente === pacienteSelecionado)
+    : [];
 
   return (
-    <div className="card">
-      <button onClick={() => setTela("agenda")}>⬅ Voltar</button>
+    <div className="pacientes-container">
+      <h2>Pacientes</h2>
 
-      <h2>Paciente</h2>
-      <h3>{pacienteSelecionado}</h3>
+      <div className="pacientes-grid">
+        {/* Lista de pacientes */}
+        <div className="pacientes-lista">
+          <h3>Pacientes</h3>
 
-      {atendimentos.length === 0 ? (
-        <p>Nenhum atendimento registrado.</p>
-      ) : (
-        <>
-          <p>
-            <strong>Total de atendimentos:</strong>{" "}
-            {atendimentos.length}
-          </p>
-
-          {Object.entries(atendimentosPorTipo).map(
-            ([tipo, lista]) => (
-              <div key={tipo} className="card destaque">
-                <h4>
-                  {tipo} ({lista.length})
-                </h4>
-
-                <table className="tabela">
-                  <thead>
-                    <tr>
-                      <th>Data</th>
-                      <th>Hora</th>
-                      <th>Profissional</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {lista.map((a, i) => (
-                      <tr key={i}>
-                        <td>
-                          {a.data
-                            .split("-")
-                            .reverse()
-                            .join("/")}
-                        </td>
-                        <td>{a.hora}</td>
-                        <td>{a.profissional}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )
+          {pacientes.length === 0 && (
+            <p className="vazio">Nenhum paciente cadastrado</p>
           )}
-        </>
-      )}
+
+          {pacientes.map((p, i) => (
+            <button
+              key={i}
+              className={`paciente-item ${
+                pacienteSelecionado === p ? "ativo" : ""
+              }`}
+              onClick={() => setPacienteSelecionado(p)}
+            >
+              {p}
+            </button>
+          ))}
+        </div>
+
+        {/* Histórico */}
+        <div className="paciente-detalhes">
+          <h3>Histórico</h3>
+
+          {!pacienteSelecionado && (
+            <p className="vazio">Selecione um paciente</p>
+          )}
+
+          {historico.map((a, i) => (
+            <div key={i} className="historico-item">
+              <strong>{a.data}</strong> — {a.hora}
+              <br />
+              {a.profissional} ({a.tipo})
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button className="btn-primario" onClick={() => setTela("agenda")}>
+        ← Voltar
+      </button>
     </div>
   );
 }
+
+export default PacientePage;
