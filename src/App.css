@@ -645,3 +645,22 @@ button.btn-primario {
 .btn-entrar:hover {
   background-color: #0c3e4a;
 }
+
+.prof-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-excluir {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-excluir:hover {
+  background: #d9363e;
+}

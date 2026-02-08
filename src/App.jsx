@@ -21,9 +21,9 @@ import { useAgenda } from "./hooks/useAgenda";
 // utils
 import {
   HORARIOS,
-  getDiaSemana,
   nomeDiaSemana
 } from "./utils/agendaUtils";
+import { getNomeDiaSemana } from "./utils/agendaUtils";
 
 function App() {
   // ======================
@@ -46,7 +46,12 @@ function App() {
   // HOOKS
   // ======================
   const { agendamentos, setAgendamentos } = useAgendamentos();
-  const { profissionais, adicionarProfissional } = useProfissionais();
+  const {
+  profissionais,
+  adicionarProfissional,
+  excluirProfissional
+} = useProfissionais();
+
 
   const {
     totalAgendamentos,
@@ -95,9 +100,10 @@ function App() {
 
   const profissionaisDisponiveis = data
     ? profissionais.filter(p =>
-        p.diasAtendimento.includes(getDiaSemana(data))
+        p.diasAtendimento.includes(getNomeDiaSemana(data))
       )
     : [];
+
 
   const getAgendamento = (dia, hora, profissional) => {
     return agendamentos.find(
@@ -204,8 +210,10 @@ function App() {
         diasProf={diasProf}
         setDiasProf={setDiasProf}
         salvarProfissional={salvarProfissional}
+        excluirProfissional={excluirProfissional}
         setTela={setTela}
       />
+
     )}
 
 

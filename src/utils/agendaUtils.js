@@ -10,6 +10,12 @@ export const getDiaSemana = (data) => {
   return dias[d.getDay()];
 };
 
+export const getNomeDiaSemana = (data) => {
+  const dias = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+  return dias[new Date(data + "T00:00:00").getDay()];
+};
+
+
 export const nomeDiaSemana = (data) => {
   return getDiaSemana(data);
 };
